@@ -140,9 +140,9 @@ ORDER BY GDP DESC;
 
 SELECT 
 SUM(CASE WHEN GDP >= 1500 THEN 1 ELSE 0 END) As High_GDP_Countries,
-AVG(CASE WHEN GDP >= 1500 THEN `Life Expectancy` ELSE NULL END) As High_GDP_Countries_Life_Expectancy,
+ROUND(AVG(CASE WHEN GDP >= 1500 THEN `Life Expectancy` ELSE NULL END)) As High_GDP_Countries_Life_Expectancy,
 SUM(CASE WHEN GDP <= 1500 THEN 1 ELSE 0 END) As Low_GDP_Countries,
-AVG(CASE WHEN GDP <= 1500 THEN `Life Expectancy` ELSE NULL END) As Low_GDP_Countries_Life_Expectancy
+ROUND(AVG(CASE WHEN GDP <= 1500 THEN `Life Expectancy` ELSE NULL END)) As Low_GDP_Countries_Life_Expectancy
 FROM world_life_expectancy_staging;
 
 -- Compare Developed Countries Life Expectancy to Developing Countries Life Expectancy
