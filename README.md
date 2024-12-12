@@ -5,10 +5,10 @@ Dive into the data analytics job market. This project explores top-paying roles 
 ## 5 Questions answered by the SQL queries
 
 1. Which Country has seen their Life Expectancy increase the most?
-3. Average Life Expectancy globally year by year
-3. Correlation between life expectancy and GDP
-4. Compare High GDP Country Life Expectancy to Low GDP Countries Life Expectancy
-5. Compare Developed Countries Life Expectancy to Developing Countries Life Expectancy
+3. What is the Average Life Expectancy globally year on year?
+3. What is the Correlation between life expectancy and GDP?
+4. How does High GDP Countries Life Expectancy compare to Low GDP Countries Life Expectancy?
+5. How does Developed Countries Life Expectancy compare to Developing Countries Life Expectancy?
 
 # Tools Used
 
