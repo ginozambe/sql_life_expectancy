@@ -32,7 +32,7 @@ WHERE Row_ID IN (
 		FROM world_life_expectancy_staging) as Row_table
 	WHERE Count > 1);
 
-## NULLs Status
+## Deal with NULLs in Status column
 
 -- Find Null Values In Status
 SELECT *
@@ -68,7 +68,7 @@ JOIN world_life_expectancy_staging as t2
 SET t1.status = 'Developed'
 WHERE t1.status = '' AND t2.status <> ''AND t2.status = 'Developed';
 
-## NULLs Life expectancy
+## Deal with NULLs in Life expectancy column
 
 -- Find NULLs in Life_expectancy
 SELECT *
