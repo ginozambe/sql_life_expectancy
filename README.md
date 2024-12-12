@@ -1,6 +1,6 @@
 ## Introduction
 
-Dive into the data analytics job market. This project explores top-paying roles and in-demand skills within data analytics, focusing on the UK job market.
+This project involves cleaning and preparing a life expectancy dataset, structuring it for analysis, and uncovering valuable insights using SQL queries.
 
 ## 5 Questions answered by the SQL queries
 
