@@ -39,13 +39,13 @@ WHERE Row_ID IN (
  ### Deal with Nulls
 
   ```SQL
- -- Updated Null values for developing countries
+ -- Updated Null values for developing countries in status column
 UPDATE world_life_expectancy_staging as t1
 JOIN world_life_expectancy_staging as t2
 	 ON t1.Country = t2.Country
 SET t1.status = 'Developing'
 WHERE t1.status = '' AND t2.status <> ''AND t2.status = 'Developing';
--- Updated Null values for developed countries
+-- Updated Null values for developed countries in status column
 UPDATE world_life_expectancy_staging as t1
 JOIN world_life_expectancy_staging as t2
 	 ON t1.Country = t2.Country
