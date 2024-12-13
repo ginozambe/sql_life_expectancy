@@ -51,7 +51,7 @@ JOIN world_life_expectancy_staging as t2
 	 ON t1.Country = t2.Country
 SET t1.status = 'Developed'
 WHERE t1.status = '' AND t2.status <> ''AND t2.status = 'Developed';
--- Update Nulls with Averages
+-- Update Nulls with Averages in Life Expectancy column
 UPDATE world_life_expectancy_staging as t1
 JOIN world_life_expectancy_staging as t2
 	ON t1.Country = t2.Country
