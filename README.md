@@ -16,6 +16,55 @@ This project involves cleaning and preparing a life expectancy dataset, structur
 - **MySQL**
 - **Visual Studio Code**
 - **Git & Github**
+
+ ## The preparation
+
+ ### Remove Duplicates
+
+  ```SQL
+ DELETE 
+FROM world_life_expectancy_staging
+WHERE Row_ID IN (
+	SELECT Row_ID
+	FROM (
+		SELECT Row_ID, 
+		CONCAT(Country, Year), 
+		ROW_NUMBER() OVER( PARTITION BY CONCAT(Country, Year) ORDER BY CONCAT(Country, Year)) As Count
+		FROM world_life_expectancy_staging) as Row_table
+	WHERE Count > 1);
+ ```
+ 
+ ![Analysis](<sql_results/cleaning1_duplicates.png>)
+
+ ### Deal with Nulls
+
+  ```SQL
+ -- Updated Null values for developing countries
+UPDATE world_life_expectancy_staging as t1
+JOIN world_life_expectancy_staging as t2
+	 ON t1.Country = t2.Country
+SET t1.status = 'Developing'
+WHERE t1.status = '' AND t2.status <> ''AND t2.status = 'Developing';
+-- Updated Null values for developed countries
+UPDATE world_life_expectancy_staging as t1
+JOIN world_life_expectancy_staging as t2
+	 ON t1.Country = t2.Country
+SET t1.status = 'Developed'
+WHERE t1.status = '' AND t2.status <> ''AND t2.status = 'Developed';
+-- Update Nulls with Averages
+UPDATE world_life_expectancy_staging as t1
+JOIN world_life_expectancy_staging as t2
+	ON t1.Country = t2.Country
+    AND t1.Year = t2.Year - 1
+JOIN world_life_expectancy_staging as t3
+	ON t1.Country = t3.Country
+    AND t1.Year = t3.Year + 1
+SET t1.`Life expectancy` = ROUND((t2.`Life expectancy` + t3.`Life expectancy`)/2,1)
+WHERE t1.`Life expectancy` = '';
+ ```
+
+  ![Analysis](<sql_results/cleaning2_status_null.png>)
+  ![Analysis](<sql_results/cleaning3_life_expectancy_null.png>)
  
  ## The analysis
  
